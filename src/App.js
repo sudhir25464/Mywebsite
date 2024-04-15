@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Mainpage from './components/Mainpage'
+import Footer from './pages/Footer'
+import { useEffect } from 'react'
+import Service from './pages/Service'
+import Aos from 'aos'
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+import ProjectSlider from './pages/ProjectSlider'
+// ..
 
 function App() {
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  <>
+  <BrowserRouter>
+  <Navbar/>
+
+  <Routes>
+  <Route path='/' element={<Mainpage/>}/>
+  </Routes>
+ 
+  <Footer/>
+  </BrowserRouter>
+  </>
+  )
 }
 
-export default App;
+export default App
